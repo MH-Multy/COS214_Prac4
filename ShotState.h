@@ -5,30 +5,34 @@
 
 class Shot; // Shot is our context and we'll make it later
 // State
-class ShotState {
+class ShotState
+{
     public:
         virtual ~ShotState() {}
         virtual void startRecording(Shot& shot) = 0;
         virtual void stopRecording(Shot& shot) = 0;
-        virtual const* getStateName() = 0;
+        virtual const char* getStateName() = 0;
 };
 
 // Concrete State
-class Recording : public ShotState {
+class Recording : public ShotState
+{
     public:
         void startRecording(Shot& shot);
         void stopRecording(Shot& shot);
         const char* getStateName();
 };
 
-class NotRecording : public ShotState {
+class NotRecording : public ShotState
+{
     public:
         void startRecording(Shot& shot);
         void stopRecording(Shot& shot);
         const char* getStateName();
 };
 
-class Completed : public ShotState {
+class Completed : public ShotState
+{
     public:
         void startRecording(Shot& shot);
         void stopRecording(Shot& shot);
