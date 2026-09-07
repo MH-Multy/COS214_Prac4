@@ -1,20 +1,29 @@
+
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra
+CXXFLAGS = -std=c++11 -Wall -g
+
 
 TARGET = taskforge
 
-SRCS = $(wildcard *.cpp)
+SRCS = main.cpp ProductionGroup.cpp Shot.cpp ShotState.cpp ShotDecorator.cpp SafetyDecorator.cpp InsuranceDecorator.cpp HierarchyIterator.cpp ShotIterator.cpp
 OBJS = $(SRCS:.cpp=.o)
+
 
 all: $(TARGET)
 
+
 $(TARGET): $(OBJS)
-	$(CXX) $(OBJS) -o $(TARGET)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-clean:
-	rm -f *.o $(TARGET)
+run: all
+	./$(TARGET)
 
-.PHONY: all clean
+
+valgrind: all
+	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET)
