@@ -1,4 +1,5 @@
 #include "Shot.h"
+#include "HierarchyIterator.h"
 
 Shot::Shot(const string& name)
 {
@@ -37,7 +38,19 @@ string Shot::getName() const
     return name;
 }
 
-bool Shot::isGroup() const
+void Shot::process() 
 {
-    return false;
+    cout << "processing shot: " << name << " (Status: " << getStateName() << ")\n";
+}
+
+void Shot::collect(std::vector<ProductionComponent*>& snapshotList) 
+{
+    snapshotList.push_back(this);
+}
+
+Iterator* Shot::createIterator() 
+{
+    std::vector<ProductionComponent*> vec;
+    this->collect(vec);
+    return new HierarchyIterator(vec,0); 
 }

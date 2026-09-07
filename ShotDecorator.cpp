@@ -1,17 +1,18 @@
-#include "SafetyDecorator.h"
+#include "ShotDecorator.h"
+#include "HierarchyIterator.h"
 
-SafetyDecorator::SafetyDecorator(ProductionComponent* component) : ShotDecorator(component)
-{
+ShotDecorator::ShotDecorator(ProductionComponent* comp) : component(comp) {}
 
+ShotDecorator::~ShotDecorator() {
+    delete component;
 }
 
-void SafetyDecorator::process()
-{
-    cout << "Prefroming safety checks... \n";
-    component->process();
+void ShotDecorator::collect(std::vector<ProductionComponent*>& snapshotList) {
+    snapshotList.push_back(this);
 }
 
-string SafetyDecorator::getName() const
-{
-    return "Safety Checked: " + component->getName();
+Iterator* ShotDecorator::createIterator() {
+    std::vector<ProductionComponent*> vec;
+    this->collect(vec);
+    return new HierarchyIterator(vec);
 }

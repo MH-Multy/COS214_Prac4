@@ -1,7 +1,5 @@
 #include "ProductionGroup.h"
-#include <iostream>
-
-#include "ProductionGroup.h"
+#include "HierarchyIterator.h"
 #include <iostream>
 
 ProductionGroup::ProductionGroup(const std::string& name)
@@ -49,7 +47,17 @@ std::string ProductionGroup::getName() const
     return name;
 }
 
-bool ProductionGroup::isGroup() const
+void ProductionGroup::collect(std::vector<ProductionComponent*>& snapshotList) 
 {
-    return true;
+    snapshotList.push_back(this); 
+    for (unsigned int i = 0; i < children.size(); i++) {
+        children[i]->collect(snapshotList); 
+    }
+}
+
+Iterator* ProductionGroup::createIterator() 
+{
+    std::vector<ProductionComponent*> vec;
+    this->collect(vec);
+    return new HierarchyIterator(vec,0);
 }
