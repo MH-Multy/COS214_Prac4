@@ -1,17 +1,17 @@
 #include "InsuranceDecorator.h"
-#include <iostream>
 
-InsuranceDecorator::InsuranceDecorator(ProductionComponent* component)
+InsuranceDecorator::InsuranceDecorator(ProductionComponent* component) : ShotDecorator(component)
 {
-
+    //inline
 }
 
-void process()
+void InsuranceDecorator::process()
 {
-
+    cout << "Chechking insurance requirements...\n";
+    component->process();
 }
 
-string getName() const
+string InsuranceDecorator::getName() const
 {
-    
+    return "Insured " + component->getName();
 }
