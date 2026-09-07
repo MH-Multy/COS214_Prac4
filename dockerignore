@@ -1,0 +1,10 @@
+.git
+.gitignore
+*.o
+taskforge
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+.vscode
+.idea
