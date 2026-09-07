@@ -2,6 +2,9 @@
 #define SHOTSTATE_H
 
 // Not gonna make 3 seperate small files
+#include "Shot.h"
+#include <iostream>
+using namespace std;
 
 class Shot; // Shot is our context and we'll make it later
 // State
