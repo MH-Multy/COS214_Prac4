@@ -2,7 +2,7 @@
 
 InsuranceDecorator::InsuranceDecorator(ProductionComponent* component) : ShotDecorator(component)
 {
-    //inline
+    //inline, calls parent
 }
 
 void InsuranceDecorator::process()
@@ -13,5 +13,5 @@ void InsuranceDecorator::process()
 
 string InsuranceDecorator::getName() const
 {
-    return "Insured " + component->getName();
+    return "Insured: " + component->getName();
 }
