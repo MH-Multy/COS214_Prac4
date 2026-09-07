@@ -13,12 +13,13 @@ private:
 public:
     ProductionGroup(const std::string& name);
     virtual ~ProductionGroup();
-
     void add(ProductionComponent* component);
     void remove(ProductionComponent* component);
-
     void process();
     std::string getName() const;
+
+    virtual Iterator* createIterator() override;
+    virtual void collect(std::vector<ProductionComponent*>& snapshotList) override;
 };
 
 #endif //PRODUCTIONGROUP_H
