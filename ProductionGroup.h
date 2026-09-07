@@ -19,6 +19,7 @@ public:
 
     void process();
     std::string getName() const;
+    bool isGroup() const;
 };
 
 #endif //PRODUCTIONGROUP_H

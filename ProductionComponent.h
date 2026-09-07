@@ -10,6 +10,7 @@ public:
 
     virtual void process() = 0;
     virtual std::string getName() const = 0;
+    virtual bool isGroup() = 0;
 };
 
 #endif //PRODUCTIONCOMPONENT_H

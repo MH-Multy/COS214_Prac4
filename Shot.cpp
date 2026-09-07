@@ -36,3 +36,8 @@ string Shot::getName() const
 {
     return name;
 }
+
+bool Shot::isGroup() const
+{
+    return false;
+}

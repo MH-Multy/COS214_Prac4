@@ -48,3 +48,8 @@ std::string ProductionGroup::getName() const
 {
     return name;
 }
+
+bool ProductionGroup::isGroup() const
+{
+    return true;
+}

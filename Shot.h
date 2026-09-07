@@ -1,6 +1,7 @@
 #ifndef SHOT_H
 #define SHOT_H
 
+#include "ProductionComponent.h"
 #include "ShotState.h"
 #include <string>
 #include <iostream>
@@ -22,6 +23,7 @@ class Shot{
         void setState(ShotState* newState);
         const char* getStateName();
         string getName() const;
+        bool isGroup() const;
 };
 
 #endif //SHOT_H
