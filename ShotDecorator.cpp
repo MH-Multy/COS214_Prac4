@@ -2,7 +2,7 @@
 
 SafetyDecorator::SafetyDecorator(ProductionComponent* component) : ShotDecorator(component)
 {
-    
+
 }
 
 void SafetyDecorator::process()
@@ -13,5 +13,5 @@ void SafetyDecorator::process()
 
 string SafetyDecorator::getName() const
 {
-    return "Safety Checked " + component->getName();
+    return "Safety Checked: " + component->getName();
 }
